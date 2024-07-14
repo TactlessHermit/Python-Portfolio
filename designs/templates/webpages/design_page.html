@@ -1,0 +1,14 @@
+{% extends 'webpages/base.html' %}
+
+{% block title %} {{ design.name }} {% endblock %}
+
+{% block body %}
+<h1 class="display-3"> {{ design.name }} </h1>
+<ul class="list-group list-group-flush">
+    <li  class="list-group-item"> {{ design.software }} </li>
+    <li  class="list-group-item"> {{ design.description }} </li>
+</ul>
+<br>
+<a class="btn btn-danger" href="{% url 'designs:delete_design' design.id%}"> Delete </a>
+<a class="btn btn-primary" href="{% url 'designs:all_designs' %}"> Back to Designs </a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'webpages/base.html' %}
+
+{% block body %}
+    <h1 class="display-1">Projects</h1>
+    {% if projects_list %}
+        <ul class="list-group list-group-flush">
+        {% for project in projects_list %}
+            <li  class="list-group-item">
+                <a href="{% url 'projects:project-page' project.id %}"> {{ project.project_name }} </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h2> No projects have been added... yet.</h2>
+    {% endif %}
+    <br><a class="btn btn-primary" href="{% url 'projects:add-project' %}"> Add Project </a>
+{% endblock %}

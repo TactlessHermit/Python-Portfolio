@@ -1,0 +1,18 @@
+{% extends 'videos/base.html' %}
+
+{% block title %} Videos {% endblock %}
+
+{% block body %}
+    <h1 class="display-1"> Videos </h1>
+    {% if all_videos %}
+        <ul class="list-group list-group-flush">
+            {% for video in all_videos %}
+            <li class="list-group-item">
+                <a href="{% url 'videos:detail' video.id %}">{{video.title}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2> No videos uploaded yet [This is the part were u add some ;) }</h2>
+    {% endif %}
+{% endblock %}

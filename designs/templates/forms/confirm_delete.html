@@ -1,0 +1,15 @@
+{% extends 'webpages/base.html' %}
+
+{% block title %} Confirm Delete {% endblock %}
+
+{% block body %}
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      <p> Are you sure you want to delete "{{object}}"? </p>
+      <br>
+      <button type="submit" value="Confirm" class="btn btn-info"> Confirm Delete </button>
+      <a class="btn btn-primary" href="{% url 'designs:all_designs' %}"> Back to Designs </a>
+    </form>
+  </div>
+{% endblock %}

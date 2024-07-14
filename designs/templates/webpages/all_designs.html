@@ -1,0 +1,17 @@
+{% extends 'webpages/base.html' %}
+
+{% block body %}
+    <h1 class="display-1"> Designs </h1>
+    {% if all_designs %}
+        <ul class="list-group list-group-flush">
+        {% for design in all_designs %}
+            <li  class="list-group-item">
+                <a href="{% url 'designs:design_page' design.id %}"> {{ design.name }} </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <blockquote> No designs added... yet. </blockquote>
+    {% endif %}
+    <br><a class="btn btn-primary" href="{% url 'designs:add_design' %}"> Upload Design </a>
+{% endblock %}

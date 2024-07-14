@@ -1,0 +1,14 @@
+{% extends 'videos/base.html' %}
+
+{% block title %} {{video.title}} {% endblock %}
+
+{% block body %}
+    <h1 class="display-3">
+        {{ video.title }}
+    </h1>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Genre: {{video.genre}} </li>
+        <li class="list-group-item"> Link: {{video.video_link}} </li>
+    </ul>
+    <br><a class="btn btn-primary" href="{% url 'videos:del-video' video.id %}">Delete</a>
+{% endblock %}

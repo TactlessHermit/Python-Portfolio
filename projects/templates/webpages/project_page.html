@@ -1,0 +1,18 @@
+{% extends 'webpages/base.html' %}
+
+{% block title %}
+    {{ project.project_name }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="display-3"> {{ project.project_name }} </h1>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Language: {{ project.language }} </li>
+        <li class="list-group-item"> Frameworks: {{ project.framework }} </li>
+        <li class="list-group-item"> Description: {{ project.description }} </li>
+        <li class="list-group-item"> Project Link:
+            <a href="{{ project.project_link }}"> Click Me! </a>
+        </li>
+    </ul><br><br>
+    <a class="btn btn-primary" href="{% url 'projects:all-projects' %}"> Projects page </a>
+{% endblock %}

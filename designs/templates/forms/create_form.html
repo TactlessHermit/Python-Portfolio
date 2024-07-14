@@ -1,0 +1,11 @@
+{% extends 'webpages/base.html' %}
+
+{% block body %}
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'forms/form_template.html' %}
+            <button class="btn btn-success" type="submit"> Submit </button>
+        </form>
+    </div>
+{% endblock %}

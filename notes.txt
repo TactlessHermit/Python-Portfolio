@@ -1,0 +1,56 @@
+General
+-init.py: Tells Python that is a python directory. Allows importing directory files
+          in regular python projects.
+-urls.py: Url mapping. Can include app urls.py [NOTE:: Detailed info in urls.py!!!]
+
+**ORDER: App > models.py > views.py > urls.py
+
+App
+-Subsection of the website i.e: Forum, Videos, Projects, etc
+-Run code (manage.py dir) {python3 manage.py startapp appName}
+-Include under 'INSTALLED APPS' in settings.py referencing the Config class of its apps.py, like so:
+	{For a music app:-	‘music.apps.MusicConfig’}
+
+App > Models.py
+-Class representations of database tables
+-Class must import models.Model
+-Datatypes: URLField, TextField, CharField, IntegerField, FloatField, etc.
+-Django creates a UID column in the background as the PK.
+-Check Migration point 3
+
+App > Admin.py
+-Create admin {python3 manage.py createsuperuser}
+-Tables can be CRUD operated on admin page by:
+ *Importing their models: {from .models import model_name}
+ *Adding models to admin page: {admin.site.register(model_name)}
+
+App > View.py
+-A function that returns some HTML (render or http response)
+-Check commented code
+-GENERIC VIEWS ARE BEST!!!
+-CREATE VIEW
+ *Html form MUST be modelName_form!
+
+App > Views.py > Templates
+-Folder of HTML pages to be rendered by views
+-Built off of a BASE TEMPLATE containing blocks: {%block name %}{% endblock %} and
+ common page items like the navbar
+-In Generic View:
+ *Add template_name
+ *Add context_object_name
+-In template file:
+ * Python code in {% %} e.g.: {% for video in all_videos %} ... {% endfor %}
+ * Python variables used in HTML tags in {{ }} e.g.: {{video.title}}
+-For View URLs:
+ *Set name_space in app > urls.py
+ *In template: {href="{% url 'videos:detail' video.id %}"}
+
+Database
+-Django comes with SQLite db. Details in settings.py
+
+Migration
+-Run code {python3 manage.py migrate} to 'sync' project with DB
+-Syncing sets up tables required by models of apps under 'INSTALLED APPS' in settings.py
+-After creation run code {python3 manage.py makemigrations app_name} to create tables or
+ commit table changes to database
+-Rerun code after makemigrate code
