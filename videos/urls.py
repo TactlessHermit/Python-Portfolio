@@ -14,5 +14,5 @@ urlpatterns = [
     path('add/', views.AddVideo.as_view(), name='add-video'),
 
     # '/videos/id/delete/'   where id = 1,2,3,4,5,etc.
-    path('<int:pk>/delete', views.DeleteVideo.as_view(), name='del-video'),
+    path('<int:pk>/delete/', views.DeleteVideo.as_view(), name='del-video'),
 ]
